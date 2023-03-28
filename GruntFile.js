@@ -1,4 +1,5 @@
 // NOTE: To uglify, roadroll and pack everything run the ./build.sh script
+const config = require('./config');
 
 module.exports = function (grunt) {
 
@@ -16,7 +17,8 @@ module.exports = function (grunt) {
 					'src/maps/**/*.json',
 					'src/gfx/**/*',
 					'dist/lib/*.js',
-					'!src/js/start_GEN.js'
+					'!src/js/start_GEN.js',
+					'config.js'
 				],
 				tasks: ['build']
 			},
@@ -136,7 +138,9 @@ module.exports = function (grunt) {
 				+ mapJson.layers[0].data.toString().replaceAll(',0,', ',,').replaceAll(',0,', ',,') + '] }; \n';
 		}
 		
-		str += '\ninit();'
+		
+		str += '\nconfig=' + JSON.stringify(config)
+		str += '\ninit(config);'
 		
 		grunt.file.write('src/js/start_GEN.js', str);
 	});

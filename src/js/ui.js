@@ -56,7 +56,9 @@ function gameRenderPost() {
 	if (g_player) {
 		let pos = vec2(0);
 
-		mapMan.renderFOW();
+		if (config.renderFOW) {
+			mapMan.renderFOW();
+		}
 
 		// scary transforms
 		for (let i = 0; i < g_transforms.length; i++) {

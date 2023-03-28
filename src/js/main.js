@@ -1,12 +1,15 @@
 /** @format */
 
 var mapMan;
+var config;
 
-function init() {
+function init(config) {
 	if (!document.body) {
 		// html document is not ready yet (safari mobile)
 		return setTimeout(init, 100);
 	}
+
+	config = config;
 
 	// generate new maps
 	generateMapFromLevel(0);
@@ -449,17 +452,4 @@ function gameRender() {
 		let hole = g_holes[i];
 		drawRect(hole.pos, vec2(hole.size / 12), hole.color);
 	}
-
-	// // sparks
-	// for (let i = 0; i < g_sparks.length; i++) {
-	// 	let spark = g_sparks[i];
-	// 	spark.pos.x += Math.cos(spark.angle) / 32;
-	// 	spark.pos.y += Math.sin(spark.angle) / 32;
-	// 	drawRect(spark.pos, vec2(1 / 24), colorSpark);
-	// 	if (--spark.life <= 0) {
-	// 		g_sparks.splice(i, 1);
-	// 	}
-	// }
-
-	//textsDraw();
 }

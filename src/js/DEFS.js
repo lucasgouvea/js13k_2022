@@ -55,7 +55,6 @@ var g_enemies = [];
 var g_doors = {};
 var g_splatter = [];
 var g_holes = [];
-//var g_sparks = [];
 var g_corpses = [];
 var g_shells = [];
 var g_moss = [];
